@@ -5,7 +5,7 @@ const sql=require('mssql');
 async function getVentas(){
     try{
         let pool=await sql.connect(conexion);
-        let salida=await pool.request().query('select * from Ventas');
+        let salida=await pool.request().query('select * from vw_venta');
         return salida.recordsets;
     }catch(err){
         console.log(err);
@@ -18,7 +18,7 @@ async function getVenta(IDVenta){
         let pool=await sql.connect(conexion);
         let salida=await pool.request()
         .input('IDVenta',sql.Int,IDVenta)
-        .query('select * from Ventas where IDVenta= @IDVenta');
+        .query('select * from vw_venta where IDVenta= @IDVenta');
         return salida.recordsets;
     }catch(err){
         console.log(err);
@@ -95,7 +95,7 @@ async function delVenta(IDVenta){
 async function getIDVentas(){
     try{
         let pool=await sql.connect(conexion);
-        let salida=await pool.request().query('select IDVenta from Ventas');
+        let salida=await pool.request().query('select IDVenta from vw_venta');
         return salida.recordsets;
     }catch(err){
         console.log(err);
@@ -105,14 +105,14 @@ async function getIDVentas(){
 async function getIDlast(){
     try{
         let pool=await sql.connect(conexion);
-        let salida=await pool.request().query('SELECT TOP 1 IDVenta=(IDVenta+1) FROM Ventas ORDER BY IDVenta DESC');
+        let salida=await pool.request().query('SELECT TOP 1 IDVenta=(IDVenta+1) FROM vw_venta ORDER BY IDVenta DESC');
         return salida.recordsets;
     }catch(err){
         console.log(err);
     }
 }
 
-async function getIDlast(){
+/*async function getIDlast(){
     try{
         let pool=await sql.connect(conexion);
         let salida=await pool.request().query('SELECT TOP 1 IDVenta=(IDVenta+1) FROM Ventas ORDER BY IDVenta DESC');
@@ -120,7 +120,7 @@ async function getIDlast(){
     }catch(err){
         console.log(err);
     }
-}
+}*/
 
 module.exports={
     getVentas:getVentas,

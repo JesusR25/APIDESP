@@ -5,7 +5,7 @@ const sql=require('mssql');
 async function getVehiculos(){
     try{
         let pool=await sql.connect(conexion);
-        let salida=await pool.request().query('select * from Vehiculos');
+        let salida=await pool.request().query('select * from vw_vehiculo');
         return salida.recordsets;
     }catch(err){
         console.log(err);
@@ -18,7 +18,7 @@ async function getVehiculo(IDVehiculo){
         let pool=await sql.connect(conexion);
         let salida=await pool.request()
         .input('IDVehiculo',sql.Int,IDVehiculo)
-        .query('select * from Vehiculos where IDVehiculo= @IDVehiculo');
+        .query('select * from vw_vehiculo where IDVehiculo= @IDVehiculo');
         return salida.recordsets;
     }catch(err){
         console.log(err);
@@ -94,7 +94,7 @@ async function delVehiculo(IDVehiculo){
 async function getIDVehiculos(){
     try{
         let pool=await sql.connect(conexion);
-        let salida=await pool.request().query('select IDVehiculo from Vehiculos');
+        let salida=await pool.request().query('select IDVehiculo from vw_vehiculo');
         return salida.recordsets;
     }catch(err){
         console.log(err);
