@@ -1,0 +1,22 @@
+class Cliente{
+    constructor(
+        IDCliente,
+		NombreCliente,
+		ApePatCliente,
+        ApeMatCliente,
+        CorreoCliente,
+        TelefonoCliente,
+        Username,
+        Contrasena
+    ){
+        this.IDCliente,
+		this.NombreCliente,
+		this.ApePatCliente,
+        this.ApeMatCliente,
+        this.CorreoCliente,
+        this.TelefonoCliente,
+        this.Username,
+        this.Contrasena
+    }
+}
+module.exports=Cliente;
