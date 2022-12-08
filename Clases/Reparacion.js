@@ -3,6 +3,7 @@ class Reparacion{
         IDReparacion,
         IDVenta,
 		Estatus,
+        Observaciones,
 		IDServicio,
         IDVehiculo,
         IDMecanico
@@ -10,6 +11,7 @@ class Reparacion{
         this.IDReparacion,
         this.IDVenta,
 		this.Estatus,
+        this.Observaciones,
 		this.IDServicio,
         this.IDVehiculo,
         this.IDMecanico

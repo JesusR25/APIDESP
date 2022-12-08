@@ -5,7 +5,7 @@ const sql=require('mssql');
 async function getReparaciones(){
     try{
         let pool=await sql.connect(conexion);
-        let salida=await pool.request().query('select * from Reparaciones');
+        let salida=await pool.request().query('select * from vw_reparacion');
         return salida.recordsets;
     }catch(err){
         console.log(err);
@@ -18,7 +18,7 @@ async function getReparacionesCliente(reparacion){
         let pool=await sql.connect(conexion);
         let salida=await pool.request()
         .input('IDCliente',sql.Int,reparacion.IDCliente)
-        .query('select * from Reparaciones where IDCliente= @IDCliente');
+        .query('select * from vw_reparacion where IDCliente= @IDCliente');
         return salida.recordsets;
     }catch(err){
         console.log(err);
@@ -30,7 +30,7 @@ async function getReparacioneVehiculo(reparacion){
         let pool=await sql.connect(conexion);
         let salida=await pool.request()
         .input('IDVehiculo',sql.Int,reparacion.IDVehiculo)
-        .query('select * from Reparaciones where IDVehiculo= @IDVehiculo');
+        .query('select * from vw_reparacion where IDVehiculo= @IDVehiculo');
         return salida.recordsets;
     }catch(err){
         console.log(err);
@@ -43,7 +43,7 @@ async function getReparacion(IDReparacion){
         let pool=await sql.connect(conexion);
         let salida=await pool.request()
         .input('IDReparacion',sql.Int,IDReparacion)
-        .query('select * from Reparaciones where IDReparacion= @IDReparacion');
+        .query('select * from vw_reparacion where IDReparacion= @IDReparacion');
         return salida.recordsets;
     }catch(err){
         console.log(err);
@@ -57,6 +57,7 @@ async function newReparacion(reparacion){
         let newReparacion=await pool.request()
             .input('IDVenta',sql.Int,reparacion.IDVenta)
             .input('Estatus',sql.VarChar,reparacion.Estatus)
+            .input('Observaciones',sql.VarChar,reparacion.Observaciones)
             .input('IDServicio',sql.Int,reparacion.IDServicio)
             .input('IDVehiculo',sql.Int,reparacion.IDVehiculo)
             .input('IDMecanico',sql.Int,reparacion.IDMecanico)
@@ -77,6 +78,7 @@ async function upReparacion(reparacion){
         .input('IDReparacion',sql.Int,reparacion.IDReparacion)
         .input('IDVenta',sql.Int,reparacion.IDVenta)
         .input('Estatus',sql.VarChar,reparacion.Estatus)
+        .input('Observaciones',sql.VarChar,reparacion.Observaciones)
         .input('IDServicio',sql.Int,reparacion.IDServicio)
         .input('IDVehiculo',sql.Int,reparacion.IDVehiculo)
         .input('IDMecanico',sql.Int,reparacion.IDMecanico)

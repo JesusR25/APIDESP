@@ -1,0 +1,20 @@
+class Historial{     
+    constructor( 
+        IDReparacion,
+        IDVenta,
+        Estatus,
+        Observaciones,
+        TipoServicio,
+        VehiculoCompleto,
+        MecanicoCompleto
+        ){
+        this.IDReparacion,
+        this.IDVenta,
+        this.Estatus,
+        this.Observaciones,
+        this.TipoServicio,
+        this.VehiculoCompleto,
+        this.MecanicoCompleto
+    } 
+} 
+module.exports=Historial;

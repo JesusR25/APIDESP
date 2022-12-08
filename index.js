@@ -26,6 +26,9 @@ const Reparacion=require('./Clases/Reparacion');
 //Detalles
 const detallesWS=require('./detallesWS');
 const Detalle=require('./Clases/Detalle');
+//Historial
+const historialWS=require('./historialWS');
+const Historial=require('./Clases/Historial');
 //
 var express =require('express');
 var bodyP= require('body-parser');
@@ -39,6 +42,23 @@ app.use(bodyP.json());
 app.use(cors());
 app.use('/API',router);
 
+
+router.route('/historial').get((request,response)=>{
+    historialWS.getHistorial().then(result=>{
+        response.json(result[0])
+    })
+});
+
+//Ruta para agregar una historial
+router.route('/historial/agregar').post((request,response)=>{
+    let Historial={...request.body}
+    historialWS.newHistorial(Historial).then(result=>{
+        response.json('Se ha registrado correctamente el historial')
+    },(err)=>{
+        console.log(err.message);
+        response.json(err.message);
+    })
+});
 
 //Ruta para obtener los Servicios
 router.route('/servicios').get((request,response)=>{
