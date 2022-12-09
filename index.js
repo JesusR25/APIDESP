@@ -130,8 +130,8 @@ router.route('/servicios/eliminar/:IDServicio').get((request,response)=>{
     })
 });
 
-router.route('/servicios/ids').get((request,response)=>{
-    serviciosWS.getIDServicios().then(result=>{
+router.route('/servicios/ns').get((request,response)=>{
+    serviciosWS.getNServicios().then(result=>{
         response.json(result[0])
     })
 });
@@ -484,8 +484,8 @@ router.route('/vehiculos/eliminar/:IDVehiculo').get((request,response)=>{
     })
 });
 
-router.route('/vehiculos/idv').get((request,response)=>{
-    vehiculosWS.getIDVehiculos().then(result=>{
+router.route('/vehiculos/nv').get((request,response)=>{
+    vehiculosWS.getNVehiculos().then(result=>{
         response.json(result[0])
     })
 });
