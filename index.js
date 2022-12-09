@@ -628,6 +628,12 @@ router.route('/vehiculo/consultarVehiMov').post((request,response)=>{
     })
 });
 
+router.route('/vehiculos/:IDCliente').get((request,response)=>{
+    vehiculosWS.getNVehiculos(request.params.IDCliente).then(result=>{
+        response.json(result[0])
+    })
+});
+
 
 
 

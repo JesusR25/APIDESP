@@ -91,10 +91,12 @@ async function delVehiculo(IDVehiculo){
         throw new Error ('Se presentó un error en el procedimiento almacenado eliminar vehiculo');
     }
 }
-async function getNVehiculos(){
+async function getNVehiculos(IDCliente){
     try{
         let pool=await sql.connect(conexion);
-        let salida=await pool.request().query("select IDVehiculo, Vehiculo=MarcaVehiculo+' '+ModeloVehiculo from vw_vehiculo");
+        let salida=await pool.request()
+        .input('IDCliente',sql.Int,IDCliente)
+        .query("select IDVehiculo, Automovil=MarcaVehiculo+' '+NombreVehiculo+' '+ModeloVehiculo from vw_vehiculo where IDCliente=@IDCliente");
         return salida.recordsets;
     }catch(err){
         console.log(err);
