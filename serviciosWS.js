@@ -74,10 +74,10 @@ async function delServicio(IDServicio){
     }
 }
 
-async function getIDServicios(){
+async function getNServicios(){
     try{
         let pool=await sql.connect(conexion);
-        let salida=await pool.request().query('select IDServicio from Servicios');
+        let salida=await pool.request().query('select IDServicio, TipoServicio from Servicios');
         return salida.recordsets;
     }catch(err){
         console.log(err);
@@ -89,5 +89,5 @@ module.exports={
     newServicio:newServicio,
     upServicio:upServicio,
     delServicio:delServicio,
-    getIDServicios:getIDServicios
+    getNServicios:getNServicios
 }
