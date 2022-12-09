@@ -124,7 +124,7 @@ async function getProductosAlfa(){
 async function getNProductos(){
     try{
         let pool=await sql.connect(conexion);
-        let salida=await pool.request().query("select NombreProducto from Productos");
+        let salida=await pool.request().query("select IDProducto, NombreProducto from Productos");
         return salida.recordsets;
     }catch(err){
         console.log(err);

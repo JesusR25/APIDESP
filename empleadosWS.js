@@ -134,7 +134,7 @@ async function getIDEmpleados(){
 async function getNEmpleados(){
     try{
         let pool=await sql.connect(conexion);
-        let salida=await pool.request().query("select NombreCompleto=NombreEmpleado+' '+ApePatEmpleado+' '+ApeMatEmpleado from Empleados");
+        let salida=await pool.request().query("select IDEmpleado, NombreCompleto=NombreEmpleado+' '+ApePatEmpleado+' '+ApeMatEmpleado from Empleados");
         return salida.recordsets;
     }catch(err){
         console.log(err);

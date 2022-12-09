@@ -133,7 +133,7 @@ async function getIDMecanicos(){
 async function getNMecanicos(){
     try{
         let pool=await sql.connect(conexion);
-        let salida=await pool.request().query("select NombreCompleto=NombreMecanico+' '+ApePatMecanico+' '+ApeMatMecanico from Mecanicos");
+        let salida=await pool.request().query("select IDMecanico, NombreCompleto=NombreMecanico+' '+ApePatMecanico+' '+ApeMatMecanico from Mecanicos");
         return salida.recordsets;
     }catch(err){
         console.log(err);

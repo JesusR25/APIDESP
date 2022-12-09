@@ -127,7 +127,7 @@ async function getIDClientes(){
 async function getNCliente(){
     try{
         let pool=await sql.connect(conexion);
-        let salida=await pool.request().query("select NombreCompleto=NombreCliente+' '+ApePatCliente+' '+ApeMatCliente from Clientes");
+        let salida=await pool.request().query("select IDCliente, NombreCompleto=NombreCliente+' '+ApePatCliente+' '+ApeMatCliente from Clientes");
         return salida.recordsets;
     }catch(err){
         console.log(err);
