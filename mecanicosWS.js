@@ -129,9 +129,21 @@ async function getIDMecanicos(){
         console.log(err);
     }
 }
+
+async function getNMecanicos(){
+    try{
+        let pool=await sql.connect(conexion);
+        let salida=await pool.request().query("select NombreCompleto=NombreMecanico+' '+ApePatMecanico+' '+ApeMatMecanico from Mecanicos");
+        return salida.recordsets;
+    }catch(err){
+        console.log(err);
+    }
+}
+
 module.exports={
     getMecanicos:getMecanicos,
     getMecanico:getMecanico,
+    getNMecanicos:getNMecanicos,
     newMecanico:newMecanico,
     upMecanico:upMecanico,
     delMecanico:delMecanico,

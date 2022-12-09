@@ -76,16 +76,12 @@ async function upReparacion(reparacion){
         let pool=await sql.connect(conexion);
         let upReparacion=await pool.request()
         .input('IDReparacion',sql.Int,reparacion.IDReparacion)
-        .input('IDVenta',sql.Int,reparacion.IDVenta)
         .input('Estatus',sql.VarChar,reparacion.Estatus)
         .input('Observaciones',sql.VarChar,reparacion.Observaciones)
-        .input('IDServicio',sql.Int,reparacion.IDServicio)
-        .input('IDVehiculo',sql.Int,reparacion.IDVehiculo)
-        .input('IDMecanico',sql.Int,reparacion.IDMecanico)
         .execute('pr_upReparacion');
 
         return upReparacion.recordsets;
-        
+
     } catch (err) {
         throw new Error ('Se presentó un error en el procedimiento almacenado actualizar reparacion');
     }

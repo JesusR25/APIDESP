@@ -43,6 +43,30 @@ app.use(cors());
 app.use('/API',router);
 
 
+router.route('/clientes/nc').get((request,response)=>{
+    clientesWS.getNCliente().then(result=>{
+        response.json(result[0])
+    })
+});
+
+router.route('/empleados/ne').get((request,response)=>{
+    empleadosWS.getNEmpleados().then(result=>{
+        response.json(result[0])
+    })
+});
+
+router.route('/mecanicos/nm').get((request,response)=>{
+    mecanicosWS.getNMecanicos().then(result=>{
+        response.json(result[0])
+    })
+});
+
+router.route('/productos/np').get((request,response)=>{
+    productosWS.getNProductos().then(result=>{
+        response.json(result[0])
+    })
+});
+
 router.route('/historial').get((request,response)=>{
     historialWS.getHistorial().then(result=>{
         response.json(result[0])

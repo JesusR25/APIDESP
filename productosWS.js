@@ -120,9 +120,21 @@ async function getProductosAlfa(){
         console.log(err);
     }
 }
+
+async function getNProductos(){
+    try{
+        let pool=await sql.connect(conexion);
+        let salida=await pool.request().query("select NombreProducto from Productos");
+        return salida.recordsets;
+    }catch(err){
+        console.log(err);
+    }
+}
+
 module.exports={
     getProductos:getProductos,
     getProducto:getProducto,
+    getNProductos:getNProductos,
     newProducto:newProducto,  
     upProducto:upProducto,
     delProducto:delProducto,

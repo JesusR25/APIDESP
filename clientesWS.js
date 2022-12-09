@@ -124,8 +124,19 @@ async function getIDClientes(){
     }
 } 
 
+async function getNCliente(){
+    try{
+        let pool=await sql.connect(conexion);
+        let salida=await pool.request().query("select NombreCompleto=NombreCliente+' '+ApePatCliente+' '+ApeMatCliente from Clientes");
+        return salida.recordsets;
+    }catch(err){
+        console.log(err);
+    }
+}
+
 module.exports={
     getClientes:getClientes,
+    getNCliente:getNCliente,
     getCliente:getCliente,
     newCliente:newCliente,
     upCliente:upCliente,
