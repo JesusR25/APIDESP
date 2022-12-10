@@ -22,9 +22,9 @@ async function newHistorial(historial){
             .input('IDVenta',sql.Int,historial.IDVenta)
             .input('Estatus',sql.VarChar,historial.Estatus)
             .input('Observaciones',sql.VarChar,historial.Observaciones)
-            .input('TipoServicio',sql.VarChar,historial.IDServicio)
-            .input('Vehiculo',sql.VarChar,historial.IDVehiculo)
-            .input('Mecanico',sql.VarChar,historial.IDMecanico)
+            .input('TipoServicio',sql.VarChar,historial.TipoServicio)
+            .input('Vehiculo',sql.VarChar,historial.Vehiculo)
+            .input('Mecanico',sql.VarChar,historial.Mecanico)
             .execute('pr_newHistorial');
 
         return newHistorial.recordsets;
