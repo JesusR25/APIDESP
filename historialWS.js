@@ -18,6 +18,7 @@ async function newHistorial(historial){
     try{
         let pool=await sql.connect(conexion);
         let newHistorial=await pool.request()
+            .input('IDReparacion',sql.Int,historial.IDReparacion)
             .input('IDVenta',sql.Int,historial.IDVenta)
             .input('Estatus',sql.VarChar,historial.Estatus)
             .input('Observaciones',sql.VarChar,historial.Observaciones)
