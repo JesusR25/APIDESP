@@ -22,8 +22,8 @@ async function newHistorial(historial){
             .input('Estatus',sql.VarChar,historial.Estatus)
             .input('Observaciones',sql.VarChar,historial.Observaciones)
             .input('TipoServicio',sql.VarChar,historial.IDServicio)
-            .input('VehiculoCompleto',sql.VarChar,historial.IDVehiculo)
-            .input('MecanicoCompleto',sql.VarChar,historial.IDMecanico)
+            .input('Vehiculo',sql.VarChar,historial.IDVehiculo)
+            .input('Mecanico',sql.VarChar,historial.IDMecanico)
             .execute('pr_newHistorial');
 
         return newHistorial.recordsets;
